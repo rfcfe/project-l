@@ -1,0 +1,302 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.screen {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: pop 0.35s ease-out;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tag {
+  margin: 0;
+  font-size: 12px;
+  color: #ffd166;
+  letter-spacing: 1px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(28px, 8vw, 52px);
+  line-height: 1.3;
+  color: #ff7eb6;
+  text-shadow: 4px 4px 0 #5b2a86;
+}
+
+.title.small {
+  font-size: clamp(22px, 6vw, 36px);
+}
+
+.gameover-title {
+  color: #ff5a5f;
+  text-shadow: 4px 4px 0 #5a1020;
+}
+
+.subtitle,
+.hint {
+  margin: 0;
+  font-size: 11px;
+  color: #c9b8ff;
+  line-height: 1.9;
+}
+
+.level-title,
+.boss-question {
+  margin: 0;
+  font-size: clamp(16px, 4.5vw, 24px);
+  line-height: 1.5;
+  color: #ff7eb6;
+}
+
+.level-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.question {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.reaction,
+.message {
+  margin: 0;
+  font-size: 12px;
+  line-height: 2;
+  color: #9ef0c0;
+}
+
+.message {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 3px solid #ff7eb6;
+  padding: 16px;
+}
+
+/* Buttons */
+.btn {
+  font-family: inherit;
+  font-size: 13px;
+  color: #1a1033;
+  background: #ffd166;
+  border: 0;
+  padding: 14px 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #b8892b;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #ffe08f;
+}
+
+.btn:active:not(:disabled) {
+  box-shadow: 0 1px 0 #b8892b;
+  translate: 0 4px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn.picked {
+  background: #9ef0c0;
+  box-shadow: 0 5px 0 #4f9c72;
+  opacity: 1;
+}
+
+.btn.yes {
+  background: #ff7eb6;
+  box-shadow: 0 5px 0 #b34a80;
+}
+
+.btn.no {
+  background: #c9b8ff;
+  box-shadow: 0 5px 0 #7b66b8;
+}
+
+.blink {
+  animation: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.55;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.options.row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: none;
+}
+
+/* Run level */
+.progress {
+  width: 100%;
+  height: 22px;
+  border: 3px solid #f5f0ff;
+  background: #2b1a52;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #9ef0c0;
+  transition: width 0.15s ease;
+}
+
+.counter,
+.bowl {
+  margin: 0;
+  font-size: 14px;
+}
+
+.hearts {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+/* Boss: fixed-size areas so the layout doesn't move while buttons change */
+.boss-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 190px;
+}
+
+.boss-media .pipoca-media img,
+.boss-media .snail img {
+  max-width: 150px;
+  max-height: 140px;
+  object-fit: cover;
+}
+
+.boss-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  margin: 0;
+  height: 110px;
+}
+
+/* `order` (not row-reverse) so the swap also works when the buttons wrap
+   onto separate lines on narrow screens. */
+.boss-buttons.swapped .btn.yes {
+  order: 2;
+}
+
+.boss-buttons.swapped .btn.no {
+  order: 1;
+}
+
+.boss-buttons .btn {
+  transform-origin: center;
+}
+
+.boss-buttons .btn.yes {
+  width: 150px;
+}
+
+.boss-buttons .btn.no {
+  width: 210px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.fine {
+  margin: 0;
+  font-size: 14px;
+  color: #c9b8ff;
+}
+
+/* Snail */
+.snail {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.snail img {
+  max-width: 180px;
+  max-height: 180px;
+  border: 3px solid #f5f0ff;
+}
+
+.snail-emoji {
+  font-size: 56px;
+}
+
+.snail figcaption {
+  font-size: 11px;
+  color: #c9b8ff;
+}
+
+/* Pipoca media */
+.pipoca-media {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.pipoca-media img,
+.pipoca-media video {
+  max-width: min(100%, 260px);
+  max-height: 260px;
+  object-fit: cover;
+  border: 3px solid #ffd166;
+}
+
+.pipoca-media figcaption {
+  font-size: 11px;
+  color: #c9b8ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen,
+  .blink {
+    animation: none;
+  }
+}
